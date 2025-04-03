@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Encoder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        textarea {
+            width: 80%;
+            height: 150px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        input {
+            width: 80%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>HTML Encoder</h2>
+    <p>Paste your HTML code below and click "Encode"</p>
+
+    <textarea id="htmlInput" placeholder="Enter your HTML code here"></textarea>
+    <br>
+    <button onclick="encodeHTML()">Encode</button>
+    <br>
+    <input type="text" id="encodedOutput" readonly placeholder="Encoded URL will appear here">
+    <br>
+    <button onclick="copyToClipboard()">Copy</button>
+
+    <script>
+        function encodeHTML() {
+            let input = document.getElementById("htmlInput").value;
+            let encoded = encodeURIComponent(input);
+            let url = "https://web-user-ab.github.io/quickTML/?q=" + encoded;
+            document.getElementById("encodedOutput").value = url;
+        }
+
+        function copyToClipboard() {
+            let output = document.getElementById("encodedOutput");
+            output.select();
+            document.execCommand("copy");
+            alert("Copied to clipboard!");
+        }
+    </script>
+
+</body>
+</html>
